@@ -16,8 +16,7 @@
   })
 
   function calcular (){    
-    if(estadoApp.selectedOption != 0){
-      document.getElementById('alertaOperador').classList.add('remove-alert')
+    if(estadoApp.selectedOption != 0){      
       switch(estadoApp.selectedOption){
         case 1:           
           estadoApp.resultado = estadoApp.algaritmo1 + estadoApp.algaritmo2;
@@ -34,8 +33,7 @@
         default:
           console.log('estado da opcao: '+estadoApp.opcao)          
       }      
-    } else {
-      document.getElementById('alertaOperador').classList.remove('remove-alert')
+    } else {     
       estadoApp.algaritmo1 = null;
       estadoApp.algaritmo2 = null;
     }
@@ -46,7 +44,7 @@
 <template>
   
   <div class="container">
-    <div id="alertaOperador" class="alert alert-info" role="alert">
+    <div v-show="estadoApp.selectedOption == 0" id="alertaOperador" class="alert alert-info" role="alert">
       Selecione uma operação antes de inserir os valores nos campos solitados.
     </div>
     <div class="card">
@@ -93,10 +91,6 @@
 
 .container {
   margin-top: 10%;
-}
-
-.remove-alert {
-  display: none;
 }
 
 </style>
